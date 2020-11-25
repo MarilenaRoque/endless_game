@@ -1,7 +1,16 @@
+var score = 0;
+var scoreText;
+
 function collectStar (player, star)
 {
     star.disableBody(true, true);
+    score += 10;
+    scoreText.setText('Score: ' + score);
 }
+
+
+
+
 
 var config = {
     type: Phaser.AUTO,
@@ -37,6 +46,8 @@ function preload ()
 
 function create ()
 {
+    
+    
     this.add.image(400, 300, 'sky');
     platforms = this.physics.add.staticGroup();
 
@@ -92,6 +103,7 @@ function create ()
 
     cursors = this.input.keyboard.createCursorKeys();
 
+    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     
 
 }
